@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "node_modules/.bin/webpack --config=src/webpack.config.js --progress --colors --watch --optimize-minimize --devtool source-map",
+    "build": "node_modules/.bin/webpack --config=src/webpack.config.js --progress --colors --optimize-minimize --devtool source-map",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
