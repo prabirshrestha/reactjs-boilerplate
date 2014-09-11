@@ -1,0 +1,23 @@
+{
+  "name": "reactjs-boilerplate",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "dependencies": {
+    "css-loader": "^0.8.0",
+    "envify": "^3.0.0",
+    "jsx-loader": "^0.11.0",
+    "less": "^1.7.5",
+    "less-loader": "^0.7.7",
+    "react": "^0.11.1",
+    "style-loader": "^0.8.0",
+    "webpack": "^1.4.0-beta3"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/webpack --config=src/webpack.config.js --progress --colors --watch --optimize-minimize --devtool source-map",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
