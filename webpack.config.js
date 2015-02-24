@@ -4,7 +4,7 @@ module.exports = {
     cache: true,
     entry: {
         app: ['./client/main.js'],
-        vendors: ['react']
+        vendors: ['react', 'reflux']
     },
     output: {
         path: 'build',
