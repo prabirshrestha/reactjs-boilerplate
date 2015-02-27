@@ -1,8 +1,9 @@
-var Reflux = require('reflux');
+import Reflux from 'reflux';
 
 var actions = Reflux.createActions([
-	"addItem",
-	"removeItem"
+    "addTodo",
+    "toggleTodo",
+    "clearCompletedTodos"
 ]);
 
 module.exports = actions;
