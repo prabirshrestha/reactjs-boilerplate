@@ -2,7 +2,7 @@ import React from 'react';
 
 import TodoItem from './item';
 
-var TodoList = React.createClass({
+export default React.createClass({
 
     propTypes: {
         todos: React.PropTypes.array.isRequried
@@ -19,5 +19,3 @@ var TodoList = React.createClass({
     }
 
 });
-
-module.exports = TodoList;
