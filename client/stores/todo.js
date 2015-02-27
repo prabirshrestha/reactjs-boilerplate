@@ -1,32 +1,31 @@
-var Reflux = require('reflux');
-var todoActions = require('../actions/todo');
+import Reflux from 'reflux';
+import todoActions from '../actions/todo';
+
+var id = 1;
 
 var todoStore = Reflux.createStore({
-	listenables: [todoActions],
+    listenables: [todoActions],
 
-	getDefaultData: function () {
-		return this.todos = [];
-	},
+    getInitialState: function () {
+        return this.todos = [];
+    },
 
-	onAddItem: function (item) {
-		var todos = this.todos.concat([item]);
-		this.update(todos);
-	},
+    onAddTodo: function (todo) {
+        todo.id = id++;
+        this.todos.push(todo);
+        this.trigger(this.todos);
+    },
 
-	onRemoveItem: function (id) {
-		var todos = this.todos.reduce(function (todos, item) {
-			if (item.id !== id) {
-				todos.push(item)
-			}
-			return todos;
-		}, []);
-		this.update(todos);
-	},
+    onToggleTodo: function (todo) {
+        todo.complete = !todo.complete;
+        this.trigger(this.todos);
+    },
 
-	updateTodos: function (todos) {
-		this.todos(todos);
-		this.trigger(todo);
-	}
+    onClearCompletedTodos: function () {
+        this.todos = this.todos.filter(todo => !todo.complete);
+        this.trigger(this.todos);
+    }
+
 });
 
 module.exports = todoStore;
