@@ -2,7 +2,7 @@ import React from 'react';
 
 import todoAction from '../../actions/todo';
 
-var TodoForm = React.createClass({
+export default React.createClass({
 
     getInitialState() {
         return { newTodoText: '' };
@@ -34,5 +34,3 @@ var TodoForm = React.createClass({
     }
 
 });
-
-module.exports = TodoForm;

@@ -7,7 +7,7 @@ import TodoList from './todo/list';
 import todoAction from '../actions/todo';
 import todoStore from '../stores/todo';
 
-var App = React.createClass({
+export default React.createClass({
 
     mixins: [Reflux.connect(todoStore, "todos")],
 
@@ -27,5 +27,3 @@ var App = React.createClass({
     }
 
 });
-
-module.exports = App;

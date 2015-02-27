@@ -2,7 +2,7 @@ import React from 'react';
 
 import todoAction from '../../actions/todo';
 
-var TodoItem = React.createClass({
+export default React.createClass({
 
     propTypes: {
         todo: React.PropTypes.object.isRequried
@@ -20,5 +20,3 @@ var TodoItem = React.createClass({
         return <span style={style} onClick={this.onClick}>{this.props.todo.text}</span>
     }
 });
-
-module.exports = TodoItem;

@@ -3,7 +3,7 @@ import todoActions from '../actions/todo';
 
 var id = 1;
 
-var todoStore = Reflux.createStore({
+export default Reflux.createStore({
     listenables: [todoActions],
 
     getInitialState: function () {
@@ -27,5 +27,3 @@ var todoStore = Reflux.createStore({
     }
 
 });
-
-module.exports = todoStore;

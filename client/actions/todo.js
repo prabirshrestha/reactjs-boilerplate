@@ -1,9 +1,7 @@
 import Reflux from 'reflux';
 
-var actions = Reflux.createActions([
+export default Reflux.createActions([
     "addTodo",
     "toggleTodo",
     "clearCompletedTodos"
 ]);
-
-module.exports = actions;
