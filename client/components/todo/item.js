@@ -9,11 +9,11 @@ export default React.createClass({
     },
 
     onClick() {
-        todoAction.toggleTodo(this.props.todo);
+        todoAction.toggleTodo(this.props.todo.id);
     },
 
     render() {
-        var style = {
+        let style = {
           textDecoration: this.props.todo.complete ? "line-through" : ""
         };
 

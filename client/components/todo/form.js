@@ -15,7 +15,7 @@ export default React.createClass({
     onSubmitForm(e) {
         e.preventDefault();
 
-        var text = this.state.newTodoText.trim();
+        let text = this.state.newTodoText.trim();
         if (text) {
             todoAction.addTodo({ text: text, complete: false });
             this.setState({ newTodoText: '' });

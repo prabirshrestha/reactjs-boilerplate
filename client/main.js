@@ -1,7 +1,7 @@
 require('./style.less');
 
-var React = require('react');
-var App = require('./components/App');
+import React from 'react';
+import App from './components/App';
 
 module.exports = window.App = {
     initialize: function (element) {
