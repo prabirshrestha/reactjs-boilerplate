@@ -1,27 +1,31 @@
 import Reflux from 'reflux';
+import Immutable from 'immutable';
+
 import todoActions from '../actions/todo';
 
-var id = 1;
+let id = 1;
 
 export default Reflux.createStore({
     listenables: [todoActions],
 
-    getInitialState: function () {
-        return this.todos = [];
+    getInitialState() {
+        return this.todos = new Immutable.OrderedMap();
     },
 
-    onAddTodo: function (todo) {
+    onAddTodo(todo) {
         todo.id = id++;
-        this.todos.push(todo);
+        this.todos = this.todos.set(todo.id, todo);
         this.trigger(this.todos);
     },
 
-    onToggleTodo: function (todo) {
+    onToggleTodo(todoId) {
+        let todo = this.todos.get(todoId);
         todo.complete = !todo.complete;
+        this.todos = this.todos.set(todoId, todo);
         this.trigger(this.todos);
     },
 
-    onClearCompletedTodos: function () {
+    onClearCompletedTodos() {
         this.todos = this.todos.filter(todo => !todo.complete);
         this.trigger(this.todos);
     }
