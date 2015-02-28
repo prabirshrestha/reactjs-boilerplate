@@ -5,7 +5,7 @@ import todoAction from '../../actions/todo';
 export default React.createClass({
 
     propTypes: {
-        todo: React.PropTypes.object.isRequried
+        todo: React.PropTypes.object.isRequired
     },
 
     onClick() {
