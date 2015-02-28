@@ -1,6 +1,7 @@
 import React from 'react';
 
 import todoAction from '../../actions/todo';
+import TodoRecord from '../../records/todo';
 
 export default React.createClass({
 
@@ -17,7 +18,7 @@ export default React.createClass({
 
         let text = this.state.newTodoText.trim();
         if (text) {
-            todoAction.addTodo({ text: text, complete: false });
+            todoAction.addTodo(new TodoRecord({ text: text, complete: false }));
             this.setState({ newTodoText: '' });
         }
     },

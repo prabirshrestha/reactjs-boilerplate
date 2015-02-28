@@ -2,8 +2,9 @@ import Reflux from 'reflux';
 import Immutable from 'immutable';
 
 import todoActions from '../actions/todo';
+import TodoRecord from '../records/todo';
 
-let id = 1;
+let id = 0;
 
 export default Reflux.createStore({
     listenables: [todoActions],
@@ -16,14 +17,14 @@ export default Reflux.createStore({
         return this.todos.toArray();
     },
 
-    onAddTodo(todo) {
-        todo.id = id++;
-        this.update(this.todos.set(todo.id, todo));
+    onAddTodo(newTodo) {
+        newTodo = newTodo.set('id', ++id);
+        this.update(this.todos.set(newTodo.id, newTodo));
     },
 
     onToggleTodo(todoId) {
         let todo = this.todos.get(todoId);
-        todo.complete = !todo.complete;
+        todo = todo.set('complete', !todo.complete);
         this.update(this.todos.set(todoId, todo));
     },
 
