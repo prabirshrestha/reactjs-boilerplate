@@ -5,7 +5,7 @@ import TodoItem from './item';
 export default React.createClass({
 
     propTypes: {
-        todos: React.PropTypes.array.isRequried
+        todos: React.PropTypes.array.isRequired
     },
 
     render() {

@@ -18,20 +18,22 @@ export default Reflux.createStore({
 
     onAddTodo(todo) {
         todo.id = id++;
-        this.todos = this.todos.set(todo.id, todo);
-        this.trigger(this.todos);
+        this.update(this.todos.set(todo.id, todo));
     },
 
     onToggleTodo(todoId) {
         let todo = this.todos.get(todoId);
         todo.complete = !todo.complete;
-        this.todos = this.todos.set(todoId, todo);
-        this.trigger(this.todos);
+        this.update(this.todos.set(todoId, todo));
     },
 
     onClearCompletedTodos() {
-        this.todos = this.todos.filter(todo => !todo.complete);
-        this.trigger(this.todos);
+        this.update(this.todos.filter(todo => !todo.complete));
+    },
+
+    update(todos) {
+        this.todos = todos;
+        this.trigger(todos.toArray());
     }
 
 });
