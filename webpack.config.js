@@ -19,10 +19,7 @@ module.exports = {
         noParse: [/\.min\.js/]
     },
     resolve: {
-        modulesDirectories: ['node_modules'],
-        alias: {
-          'react': __dirname + '/node_modules/react/dist/react-with-addons.min.js'
-        }
+        modulesDirectories: ['node_modules']
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -30,5 +27,5 @@ module.exports = {
           __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
         }),
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
-    ],
+    ]
 };

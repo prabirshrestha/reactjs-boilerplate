@@ -8,8 +8,12 @@ let id = 1;
 export default Reflux.createStore({
     listenables: [todoActions],
 
+    init() {
+        this.todos = new Immutable.OrderedMap();
+    },
+
     getInitialState() {
-        return this.todos = new Immutable.OrderedMap();
+        return this.todos.toArray();
     },
 
     onAddTodo(todo) {
