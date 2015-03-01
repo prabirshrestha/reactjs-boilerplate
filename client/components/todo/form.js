@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TodoAction from '../../actions/todo';
+import TodoActions from '../../actions/todo';
 import TodoRecord from '../../records/todo';
 
 export default React.createClass({
@@ -13,7 +13,7 @@ export default React.createClass({
 
         if (text) {
             let newTodo = new TodoRecord({ text: text, complete: false });
-            TodoAction.add(newTodo);
+            TodoActions.add(newTodo);
             $text.value = '';
         }
     },

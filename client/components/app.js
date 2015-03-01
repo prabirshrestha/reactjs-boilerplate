@@ -4,7 +4,7 @@ import HoverboardListenerMixin from '../utils/HoverboardListenerMixin';
 import TodoForm from './todo/form';
 import TodoList from './todo/list';
 
-import TodoAction from '../actions/todo';
+import TodoActions from '../actions/todo';
 
 export default React.createClass({
 
@@ -15,11 +15,11 @@ export default React.createClass({
     },
 
     componentDidMount() {
-        this.subscribe(TodoAction.getState(state => this.setState({ todos: state.todos })));
+        this.subscribe(TodoActions.getState(state => this.setState({ todos: state.todos })));
     },
 
     clearCompleted() {
-        TodoAction.clearCompleted();
+        TodoActions.clearCompleted();
     },
 
     render() {

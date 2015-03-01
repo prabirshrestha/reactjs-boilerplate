@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TodoAction from '../../actions/todo';
+import TodoActions from '../../actions/todo';
 
 export default React.createClass({
 
@@ -9,7 +9,7 @@ export default React.createClass({
     },
 
     onClick() {
-        TodoAction.toggle(this.props.todo.id);
+        TodoActions.toggle(this.props.todo.id);
     },
 
     render() {
