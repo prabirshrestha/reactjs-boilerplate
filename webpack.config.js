@@ -3,12 +3,16 @@ var webpack = require('webpack');
 module.exports = {
     cache: true,
     entry: {
-        app: ['./client/main.js'],
+        app: [
+             'webpack-dev-server/client?http://localhost:8080/build/',
+            './client/main.js'
+        ],
         vendors: ['immutable', 'react', 'reflux']
     },
     output: {
         path: 'build',
-        filename: '[name].js'
+        filename: '[name].js',
+        publicPath: '/build/'
     },
     module: {
         loaders: [
