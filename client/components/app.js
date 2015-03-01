@@ -1,18 +1,25 @@
 import React from 'react';
-import Reflux from 'reflux';
+import HoverboardListenerMixin from '../utils/HoverboardListenerMixin';
 
 import TodoForm from './todo/form';
 import TodoList from './todo/list';
 
-import todoAction from '../actions/todo';
-import todoStore from '../stores/todo';
+import TodoAction from '../actions/todo';
 
 export default React.createClass({
 
-    mixins: [Reflux.connect(todoStore, "todos")],
+    mixins: [HoverboardListenerMixin],
 
-    clearCompletedTodos() {
-        todoAction.clearCompletedTodos();
+    getInitialState() {
+        return { todos: [] };
+    },
+
+    componentDidMount() {
+        this.subscribe(TodoAction.getState(state => this.setState({ todos: state.todos })));
+    },
+
+    clearCompleted() {
+        TodoAction.clearCompleted();
     },
 
     render() {
@@ -21,7 +28,7 @@ export default React.createClass({
                 <h1>Todo App</h1>
                 <TodoList todos={this.state.todos}/>
                 <TodoForm />
-                <input type="button" value="Clear all completed todos" onClick={this.clearCompletedTodos} />
+                <input type="button" value="Clear all completed todos" onClick={this.clearCompleted} />
             </div>
         );
     }

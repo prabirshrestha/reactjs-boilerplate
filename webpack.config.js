@@ -4,10 +4,10 @@ module.exports = {
     cache: true,
     entry: {
         app: [
-             'webpack-dev-server/client?http://localhost:8080/build/',
+             'webpack-dev-server/client?http://localhost:3000/build/',
             './client/main.js'
         ],
-        vendors: ['immutable', 'react', 'reflux']
+        vendors: ['immutable', 'react']
     },
     output: {
         path: 'build',
