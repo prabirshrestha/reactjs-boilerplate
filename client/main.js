@@ -1,10 +1,14 @@
 require('./style.less');
 
 import React from 'react';
-import App from './components/App';
+import App from './components/app';
 
-module.exports = window.App = {
-    initialize: function (element) {
-        React.render(<App/>, element);
+let APP = {
+    initialize(options) {
+        React.render(<App/>, options.element);
     }
 };
+
+window.APP = APP;
+
+export default APP;
