@@ -1,6 +1,6 @@
-import Immutable from 'immutable';
+import { Record } from 'immutable';
 
-export default Immutable.Record({
+export default Record({
     id: 0,
     text: '',
     complete: false

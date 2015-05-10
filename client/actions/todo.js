@@ -1,10 +1,10 @@
 import Hoverboard from 'hoverboard';
-import Immutable from 'immutable';
+import { OrderedMap } from 'immutable';
 
 export default Hoverboard({
     _nextId: 1,
 
-    _todos: new Immutable.OrderedMap(),
+    _todos: new OrderedMap(),
 
     getInitialState() {
         return { todos: this._todos.toArray() };
