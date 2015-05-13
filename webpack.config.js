@@ -1,8 +1,8 @@
 var webpack = require('webpack');
 
 var variables = {
-     __DEV__: (process.env.NODE_ENVIRONMENT || 'development') === 'development' ? true : false
- };
+    __DEV__: (process.env.NODE_ENVIRONMENT || 'development') === 'development' ? true : false
+};
 
 module.exports = {
     cache: true,
@@ -10,7 +10,7 @@ module.exports = {
         app: variables.__DEV__
             ? [ 'webpack-dev-server/client?http://localhost:3000/build/', './client/main.js']
             : [ './client/main.js' ],
-        vendors: ['immutable', 'react']
+        vendors: ['immutable', 'react', 'hoverboard']
     },
     output: {
         path: 'build',
@@ -19,7 +19,7 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?experimental'},
+            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?stage=0'},
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }
         ],
