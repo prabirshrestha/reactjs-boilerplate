@@ -1,12 +1,15 @@
 var webpack = require('webpack');
 
+var variables = {
+     __DEV__: (process.env.NODE_ENVIRONMENT || 'development') === 'development' ? true : false
+ };
+
 module.exports = {
     cache: true,
     entry: {
-        app: [
-             'webpack-dev-server/client?http://localhost:3000/build/',
-            './client/main.js'
-        ],
+        app: variables.__DEV__
+            ? [ 'webpack-dev-server/client?http://localhost:3000/build/', './client/main.js']
+            : [ './client/main.js' ],
         vendors: ['immutable', 'react']
     },
     output: {
@@ -26,10 +29,7 @@ module.exports = {
         modulesDirectories: ['node_modules']
     },
     plugins: [
-        new webpack.DefinePlugin({
-          __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-          __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
-        }),
+        new webpack.DefinePlugin(variables),
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
     ]
 };
