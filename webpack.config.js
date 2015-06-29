@@ -1,5 +1,6 @@
 /* global process */
 var webpack = require('webpack');
+var glob = require('glob');
 
 var __DEV__ = (process.env.NODE_ENVIRONMENT || 'development') === 'development' ? true : false;
 
@@ -13,7 +14,8 @@ var reactExternal =  {
 module.exports = {
 
     entry: {
-        app: ['./src/app.js' ]
+        'app': ['./src/app.js' ],
+        'app.specs': glob.sync("./src/**/*.specs.js")
     },
 
     output: {
@@ -44,7 +46,8 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             __DEV__: __DEV__
-        })
+        }),
+        new webpack.optimize.CommonsChunkPlugin('app', 'app.js')
     ]
 
 };

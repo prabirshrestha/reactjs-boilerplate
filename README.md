@@ -27,3 +27,17 @@ npm run-script build-prod
 ```
 
 For windows use `SET NODE_ENV=production` instead.
+
+## Run Test
+
+```bash
+npm install
+npm test
+```
+
+### Run test in CI
+
+```bash
+npm install
+npm test:ci
+```

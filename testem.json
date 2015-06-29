@@ -1,0 +1,19 @@
+{
+    "framework": "jasmine2",
+    "src_files": [ "src/**/*.js" ],
+    "before_tests": "npm run-script build",
+    "serve_files": [
+        "node_modules/es5-shim/es5-shim.js",
+        "node_modules/react/dist/react-with-addons.js",
+        "build/app.js",
+        "build/app.specs.js"
+    ],
+    "launch_in_dev": [
+        "chrome",
+        "ie",
+        "phantomjs"
+    ],
+    "launch_in_ci": [
+        "phantomjs"
+    ]
+}
