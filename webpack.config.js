@@ -1,35 +1,50 @@
+/* global process */
 var webpack = require('webpack');
 
-var variables = {
-    __DEV__: (process.env.NODE_ENVIRONMENT || 'development') === 'development' ? true : false
+var __DEV__ = (process.env.NODE_ENVIRONMENT || 'development') === 'development' ? true : false;
+
+var reactExternal =  {
+	root: 'React',
+	commonjs: 'react',
+	commonjs2: 'react',
+	amd: 'react'
 };
 
 module.exports = {
-    cache: true,
+
     entry: {
-        app: variables.__DEV__
-            ? [ 'webpack-dev-server/client?http://localhost:3000/build/', './client/main.js']
-            : [ './client/main.js' ],
-        vendors: ['immutable', 'react', 'hoverboard']
+        app: ['./src/app.js' ]
     },
+
     output: {
-        path: 'build',
+        path: './build/',
+        publicPath: '/build/',
         filename: '[name].js',
-        publicPath: '/build/'
+        libraryTarget: 'umd'
     },
+
     module: {
         loaders: [
-            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?stage=0'},
+            { test: /\.js$/, loader: 'babel-loader?stage=0'},
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }
         ],
-        noParse: [/\.min\.js/]
+        noParse: [ /\.min\.js/ ]
     },
+
+    externals: {
+        'react': reactExternal,
+		'react/addons': reactExternal
+    },
+
     resolve: {
-        modulesDirectories: ['node_modules']
+        extensions: [ '', '.js' ]
     },
+
     plugins: [
-        new webpack.DefinePlugin(variables),
-        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+        new webpack.DefinePlugin({
+            __DEV__: __DEV__
+        })
     ]
+
 };
