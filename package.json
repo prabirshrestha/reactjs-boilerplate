@@ -15,7 +15,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server --config=webpack.config.js --port=3000 --progress --colors --watch --devtool source-map",
+    "start": "node_modules/.bin/webpack-dev-server --config=webpack.config.js --port=3000 --progress --colors --watch --devtool source-map --hot",
     "build": "node_modules/.bin/webpack --config=webpack.config.js --progress --colors --devtool source-map",
     "build-prod": "node_modules/.bin/webpack --config=webpack.config.js --progress --colors --optimize-minimize --devtool source-map",
     "test": "node_modules/.bin/testem",
@@ -27,6 +27,7 @@
     "es5-shim": "^4.1.7",
     "glob": "^5.0.12",
     "phantomjs": "^1.9.17",
+    "react-hot-loader": "^1.2.7",
     "testem": "^0.8.4"
   }
 }

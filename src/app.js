@@ -9,3 +9,6 @@ export class App extends React.Component {
     }
 
 }
+
+// https://github.com/gaearon/react-hot-loader/tree/master/docs#usage-with-external-react
+export let reactHotLoaderInjectProvider = module.hot ? require('react-hot-loader/Injection').RootInstanceProvider.injectProvider : undefined;

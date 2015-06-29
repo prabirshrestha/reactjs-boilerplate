@@ -2,7 +2,7 @@
 var webpack = require('webpack');
 var glob = require('glob');
 
-var __DEV__ = (process.env.NODE_ENVIRONMENT || 'development') === 'development' ? true : false;
+var __DEV__ = (process.env.NODE_ENV || 'development') === 'development' ? true : false;
 
 var reactExternal =  {
 	root: 'React',
@@ -14,7 +14,7 @@ var reactExternal =  {
 module.exports = {
 
     entry: {
-        'app': ['./src/app.js' ],
+        'app': __DEV__ ? [ 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server', './src/app.js' ] : ['./src/app.js' ],
         'app.specs': glob.sync("./src/**/*.specs.js")
     },
 
@@ -27,7 +27,7 @@ module.exports = {
 
     module: {
         loaders: [
-            { test: /\.js$/, loader: 'babel-loader?stage=0'},
+            { test: /\.js$/, loaders: __DEV__ ? [ 'react-hot', 'babel-loader?stage=0'] : ['babel-loader?stage=0'], exclude: /node_modules/ },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }
         ],
@@ -44,6 +44,7 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
             __DEV__: __DEV__
         }),

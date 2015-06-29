@@ -1,16 +1,26 @@
 <html>
-	<head>
-		<title>ReactJS Boilerplate</title>
-	</head>
-	<body>
-		<div id="app"></div>
-		<script src="node_modules/react/dist/react.js"></script>
-		<script src="build/app.js"></script>
-		<script>
-			React.render(
-				React.createElement(App, null),
-				document.getElementById('app')
-			);
-		</script>
-	</body>
+    <head>
+        <title>ReactJS Boilerplate</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script src="node_modules/react/dist/react.js"></script>
+        <script src="build/app.js"></script>
+        <script>
+            (function (globals) {
+                var app = React.render(
+                    React.createElement(App, null),
+                    document.getElementById('app')
+                );
+
+                if (globals.reactHotLoaderInjectProvider) {
+                    globals.reactHotLoaderInjectProvider({
+                        getRootInstances: function () {
+                            return [app];
+                        }
+                    });
+                }
+            })(this);
+        </script>
+    </body>
 </html>
