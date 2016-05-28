@@ -14,7 +14,7 @@ describe('<App />', () => {
 
     it('should correctly set the text to Hello World', () => {
         const app = TestUtils.renderIntoDocument(<App />);
-        const div = TestUtils.findRenderedDOMComponentWithTag(app, 'div').getDOMNode();
+        const div = TestUtils.findRenderedDOMComponentWithTag(app, 'div');
         expect(div.textContent).toBe('Hello World');
     });
 
